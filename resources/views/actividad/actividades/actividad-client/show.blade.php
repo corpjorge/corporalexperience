@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Activad
+        Activad Programada
         <small>ID: {{$row->id}}</small>
       </h1>
       <ol class="breadcrumb">
@@ -17,9 +17,9 @@
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="javascript:history.back()">
+      {{-- <a class="btn btn-app" href="javascript:history.back()">
         <i class="fa fa-arrow-left"></i> Atras
-      </a>
+      </a> --}}
 
       @if (count($errors) > 0)
   			<div class="alert alert-danger">
@@ -32,6 +32,14 @@
   			</div>
 	    @endif
 
+      @if(session()->has('message'))
+         <div class="alert alert-success alert-dismissible">
+           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           <h4><i class="icon fa fa-check"></i> Realizado!</h4>
+           {{session()->get('message')}}
+         </div>
+      @endif
+
 <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-body box-profile">
@@ -42,12 +50,16 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Fecha</b> <a class="pull-right">{{$row->fecha}}</a>
+                  <b>Fecha</b> <a class="pull-right"><?php $fecha = \Carbon\Carbon::parse($row->fecha); ?>{{$fecha->format('d-m-Y')}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Hora</b> <a class="pull-right">{{$row->hora_inicio}} a {{$row->hora_final}}</a>
+                  <b>Hora</b> <a class="pull-right">
+                                <?php $hora_inicio = \Carbon\Carbon::parse($row->hora_inicio); ?>{{$hora_inicio->format('h:i A')}}
+                                  a
+                                <?php $hora_final = \Carbon\Carbon::parse($row->hora_final); ?>{{$hora_final->format('h:i A')}}
+                              </a>
                 </li>
-                <li class="list-group-item">
+                {{-- <li class="list-group-item">
                   <b>Nomina</b> <a class="pull-right">{{$row->nomina}}</a>
                 </li>
                 <li class="list-group-item">
@@ -58,7 +70,7 @@
                 </li>
                 <li class="list-group-item">
                   <b>Cargos</b> <a class="pull-right">{{$row->nomina_cargos}}</a>
-                </li>
+                </li> --}}
                 <li class="list-group-item">
                   <b>Valor</b> <a class="pull-right">{{$row->valor}}</a>
                 </li>
@@ -66,7 +78,7 @@
                   <b>Profesores: </b>
                   @foreach ($asignaciones as $asignacion)
                     @if ($row->act_estado_id == 3 OR Auth::user()->rol_id <= 2)
-                     <a href="{{url('asignacion/'.$asignacion->id)}}" class="pull-right"><b>{{$asignacion->usuario->name}}</b></a><br>
+                     <a href="{{url('asignacion/'.$asignacion->id)}}" class="pull-right"><b>{{$asignacion->usuario->name}}</b> <i class="fa fa-eye"></i></a><br>
                    @endif
                  @endforeach
                 </li>
@@ -128,7 +140,7 @@
                     <!-- /.modal-dialog -->
                   </div>
                 @else
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary">Ver asignacion</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary">Ver profes asignados</button>
                   <div class="modal modal-primary fade" id="modal-primary">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -139,7 +151,7 @@
                         </div>
                         <div class="modal-body">
                           @foreach ($asignaciones as $asignacion)
-                            <p style="color:#000">{{$asignacion->usuario->name}} -<a href="{{url('asignacion/'.$asignacion->id)}}" style="color:#ffffff"> ver</a></p>
+                            <p style="color:#ffffff">{{$asignacion->usuario->name}} -<a href="{{url('asignacion/'.$asignacion->id)}}" style="color:#ffffff"> ver detalles <i class="fa fa-arrow-circle-right"></i></a></p>
                           @endforeach
                         </div>
                         <div class="modal-footer">

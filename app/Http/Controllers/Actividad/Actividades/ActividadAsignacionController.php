@@ -26,14 +26,48 @@ class ActividadAsignacionController extends Controller
     public function index()
     {
         if (Auth::user()->rol_id == 1 OR Auth::user()->rol_id == 2) {
-          $rows = ActActividadesAsignaciones::orderBy('id', 'desc')->paginate(30);
+          $sinAsignar = ActActividadesClient::where('act_estado_id', 1)->count();
+          $sinConfirmar = ActActividadesClient::where('act_estado_id', 2)->count();
+          $pendiente = ActActividadesClient::where('act_estado_id', 3)->count();
+          $atrasado = ActActividadesClient::where('act_estado_id', 4)->count();
+          return view('actividad.actividades.programacion.index', compact('sinAsignar', 'sinConfirmar', 'pendiente','atrasado'));
+
         }
         if (Auth::user()->rol_id == 7) {
+          // $actHoy = ActActividadesAsignaciones::actHoy(Auth::user()->id)->paginate(15);
+          $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->where('user_id',Auth::user()->id)->paginate(15);
           $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id','!=',1)->where('act_estado_id','!=',2)->where('act_estado_id','!=',6)->orderBy('id', 'desc')->paginate(30);
+          return view('actividad.actividades.asignacion.index', ['rows' => $rows, 'atrasados' => $atrasados]);
         }
-        return view('actividad.actividades.asignacion.index', ['rows' => $rows]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function calendarioIndex()
+    {
+        if (Auth::user()->rol_id == 1 OR Auth::user()->rol_id == 2) {
+          $rows = ActActividadesClient::all();
+        }
+        if (Auth::user()->rol_id == 7) {
+          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->get();
+        }
+        return view('actividad.actividades.calendario.index', ['rows' => $rows]);
+    }
+
+
+    public function confirmar($id)
+    {
+      $dato = ActActividadesAsignaciones::find($id);
+      $dato->confirmacion = 1;
+      $dato->save();
+      session()->flash('message', 'Actividad confirmada');
+      return redirect()->back();
 
     }
+
 
 
     /**
@@ -144,10 +178,13 @@ class ActividadAsignacionController extends Controller
 
     public function finalizarCheck(Request $request, $id)
     {
+      ini_set('max_execution_time', 300);
+
       $request->validate([
         'fecha' => 'required|',
         'hora_inicio' => 'required|',
         'hora_final' => 'required|',
+        'participantes' => 'required|',
         'observaciones' => 'required|',
         'fotos' => 'required|',
       ]);
@@ -170,14 +207,16 @@ class ActividadAsignacionController extends Controller
       $dato->fecha = $fecha;
       $dato->hora_inicio = $hora_inicio;
       $dato->hora_final = $hora_final;
+      $dato->participantes = $request->participantes;
       $dato->observaciones = $request->observaciones;
       $dato->save();
 
       $i = 1;
       foreach ($request->fotos as $foto) {
 
+       $nombre = str_random(40);
        $fileNameOrginal=$foto->getClientOriginalName();
-       $fileName=$id.'-'.$i++;
+       $fileName=$id.'-'.$nombre;
        $fileType=$foto->guessExtension();
 
        Storage::disk('local')->put($fileName,  \File::get($foto));

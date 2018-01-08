@@ -27,6 +27,5 @@ class ActClientFinal extends Model
             // 'id' // Local key on users table...);
       );
     }
- 
 
 }

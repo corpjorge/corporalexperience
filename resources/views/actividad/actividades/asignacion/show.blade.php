@@ -40,6 +40,8 @@
         @endif
       @endif
 
+
+
       <a class="btn btn-app" href="{{ url('asistencia/'.$row->id)}}">
         <i class="fa fa-odnoklassniki"></i> Asistencia
       </a>
@@ -47,8 +49,13 @@
 
     <div class="callout callout-{{$row->estado->estilo}}"> <h4>{{$row->estado->descripcion}}</h4> </div>
 
+    <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+          <b><i class="fa fa-info"></i> Note:</b><br>
+            Para confirmar que se ha realizado una actividad debe dar clic en el icono <i class="fa fa-check"></i> y finalizar la actividad con los datos solicitados</b><br>
+    </p>
 
-<div class="col-md-4">
+
+<div class="col-md-6">
       <div class="box box-primary">
         <div class="box-body box-profile">
               <h3 class="profile-username text-center">Actividad</h3>
@@ -64,7 +71,7 @@
                 </li>
                 <li class="list-group-item">
                   <b>Fecha Asignada</b> <a class="pull-right">{{$row->actividad->fecha}}</a>
-                </li>           
+                </li>
                 <li class="list-group-item">
                   <b>Fecha Realizada</b>
                   @if ($row->fecha == null)
@@ -95,6 +102,11 @@
 
                   </a>
                 </li>
+                @if (Auth::user()->rol_id <= 2)
+                <li class="list-group-item">
+                  <b>Valor</b> <a class="pull-right">{{$row->actividad->valor}}</a>
+                </li>
+                @endif
                 <li class="list-group-item">
                   <b>Observaciones</b> <a class="pull-right">{{$row->observaciones}}</a><br><br>
                 </li>
@@ -104,7 +116,7 @@
 </div>
 
 
-<div class="col-md-4">
+<div class="col-md-6">
       <div class="box box-primary">
                 <div class="box-body box-profile">
                   <h3 class="profile-username text-center">Sede</h3>
@@ -131,7 +143,7 @@
                     </div>
         </div>
 </div>
-
+{{--
 <div class="col-md-4">
       <div class="box box-primary">
             <div class="box-body box-profile">
@@ -153,17 +165,13 @@
                     <li class="list-group-item">
                       <b>Cargos</b> <a class="pull-right">{{$row->actividad->nomina_cargos}}</a>
                     </li>
-                    @if (Auth::user()->rol_id <= 2)
-                    <li class="list-group-item">
-                      <b>Valor</b> <a class="pull-right">{{$row->actividad->valor}}</a>
-                    </li>
-                    @endif
+
                   </ul>
                 </div>
 
 
         </div>
-</div>
+</div> --}}
 
 
 <div class="col-md-12">

@@ -30,22 +30,22 @@ class HomeController extends Controller
     {
       ActActividadesClient::atrasados();
 
-      if (Auth::user()->rol_id == 7) {
-        $actHoy = ActActividadesAsignaciones::actHoy(Auth::user()->id)->paginate(15);
-        $actHoyTotal = ActActividadesAsignaciones::actHoy(Auth::user()->id)->count();
-        $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->where('user_id',Auth::user()->id)->paginate(15);
-        $realizadas = ActActividadesAsignaciones::realizadas(Auth::user()->id);
-        return view('home-profe', compact('actHoyTotal', 'realizadas'), ['actHoy' => $actHoy, 'atrasados' => $atrasados]);
-      }
+      // if (Auth::user()->rol_id == 7) {
+      //   $actHoy = ActActividadesAsignaciones::actHoy(Auth::user()->id)->paginate(15);
+      //   $actHoyTotal = ActActividadesAsignaciones::actHoy(Auth::user()->id)->count();
+      //   $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->where('user_id',Auth::user()->id)->paginate(15);
+      //   $realizadas = ActActividadesAsignaciones::realizadas(Auth::user()->id);
+      //   return view('home-profe', compact('actHoyTotal', 'realizadas'), ['actHoy' => $actHoy, 'atrasados' => $atrasados]);
+      // }
       if (Auth::user()->rol_id == 10) {
         $actHoy = ActActividadesAsignaciones::actHoyClient()->paginate(15);
         return view('home-client', ['actHoy' => $actHoy,]);
       }
        else {
-         $actHoy = ActActividadesAsignaciones::actHoyClient()->paginate(15);
-         $total = ActActividadesAsignaciones::actHoyClient()->count();
-         $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->paginate(15);
-         return view('home', compact('total'),['actHoy' => $actHoy, 'atrasados' => $atrasados]);
+         // $actHoy = ActActividadesAsignaciones::actHoyClient()->paginate(15);
+         // $total = ActActividadesAsignaciones::actHoyClient()->count();
+         // $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->paginate(15);
+         return view('home');
       }
 
     }

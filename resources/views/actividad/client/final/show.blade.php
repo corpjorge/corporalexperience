@@ -4,8 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Clientes
-        <small>Resumen de clientes ingresados</small>
+        Cliente
+        <small>Resumen del cliente</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Nivel</a></li>
@@ -50,16 +50,16 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Telefono</b> <a class="pull-right">{{$row->telefono}}</a>
+                  <b>Telefono</b> <a class="pull-right">{{$row->telefono}}</a><br><br>
                 </li>
                 <li class="list-group-item">
-                  <b>Correo</b> <a class="pull-right">{{$row->correo}}</a>
+                  <b>Correo</b> <a class="pull-right">{{$row->correo}}</a><br><br>
                 </li>
                 <li class="list-group-item">
-                  <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a>
+                  <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a><br><br>
                 </li>
                 <li class="list-group-item">
-                  <b>Intermediario</b> <a class="pull-right">{{$row->intermediario->nombre}}</a>
+                  <b>Intermediario</b> <a class="pull-right">{{$row->intermediario->nombre}}</a><br><br>
                 </li>
               </ul>
 @if (Auth::user()->rol_id <= 2)
@@ -169,6 +169,7 @@
                         <table class="table table-hover" >
                           <tbody><tr>
                             <th>#</th>
+                            <th>Actividad</th>
                             <th>fecha</th>
                             <th>Hora</th>
                             <th>Estado</th>
@@ -177,6 +178,7 @@
                           @foreach ($actividades as $actividad)
                           <tr id="tabla_sedes">
                             <td>{{$actividad->id}}</td>
+                            <td>{{$actividad->actividad->nombre}}</td>
                             <td>{{$actividad->fecha}}</td>
                             <td>
                               <?php $hora_inicio = \Carbon\Carbon::parse($actividad->hora_inicio); ?>{{$hora_inicio->format('h:i A')}}
@@ -238,7 +240,7 @@
                                   <!-- /.modal-dialog -->
                                 </div>
                               @else
-                                <a href="{{ url('')}}"><small class="label label-{{$actividad->estado->estilo}}"> {{$actividad->estado->descripcion}}</small></a>
+                                <a ><small class="label label-{{$actividad->estado->estilo}}"> {{$actividad->estado->descripcion}}</small></a>
                               @endif
                             </td>
                             @else
@@ -267,15 +269,13 @@
                             <th>#</th>
                             <th>Dirección</th>
                             <th>contacto</th>
-                            <th>Telefono</th>
                             <th>Actividades</th>
                           </tr>
                           @foreach ($sedes as $sede)
                           <tr id="tabla_sedes">
                             <td>{{$sede->id}}</td>
-                            <td>{{$sede->direccion}}<a href="https://maps.google.com/?q={{$sede->lat}},{{$sede->lng}}" target="_blank"> <i class="fa fa-map-marker"></i></td>
-                            <td><a href="{{ url('sedes/'.$sede->id)}}">{{$sede->contacto}}</a></td>
-                            <td>{{$sede->telefono}}</td>
+                            <td><a href="https://maps.google.com/?q={{$sede->lat}},{{$sede->lng}}" target="_blank"> <i class="fa fa-map-marker"></i> </a>{{$sede->direccion}}</td>
+                            <td><a href="{{ url('sedes/'.$sede->id)}}"><i class="fa fa-eye"></i></a> {{$sede->contacto}}</td>                            
                             <td><a href="{{ url('actividades-client/create/'.$sede->id)}}"><i class="fa fa-search"></i></a></td>
                           </tr>
                           @endforeach

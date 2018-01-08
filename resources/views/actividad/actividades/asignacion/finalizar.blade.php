@@ -100,11 +100,19 @@
 
               <div class="col-md-3">
                 <div class="form-group">
+                  <label>Participantes</label>
+                  <input type="Number" class="form-control" placeholder="Participantes" name="participantes" value="{{old('participantes')}}" min="1">
+                </div>
+              </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
                   <label>Observaciones</label>
                   <input type="text" class="form-control" placeholder="MAX 650 Caracteres" name="observaciones" value="{{old('observaciones')}}">
                 </div>
               </div>
-              </div>
+            </div><br><br>
 
               <div class="col-md-3">
                 <div class="form-group">

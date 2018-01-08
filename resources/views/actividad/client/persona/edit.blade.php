@@ -5,19 +5,19 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Editar Persona
+        Editar Participante
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Nivel</a></li>
-        <li class="active">Editar Persona</li>
+        <li class="active">Editar Participante</li>
       </ol>
     </section>
 
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="{{ url('personas')}}">
+      <a class="btn btn-app" href="{{ url('personas/'.$row->act_client_final_id.'/cliente')}}">
         <i class="fa fa-arrow-left"></i> Atras
       </a>
 
@@ -43,7 +43,7 @@
 
       <div class="box box-primary" id="agregarSede">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar Persona</h3>
+              <h3 class="box-title">Editar Participante</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -87,7 +87,7 @@
               </div>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-info" ><i class="fa fa-fw fa-plus"></i> Añadir</button>
+              <button type="submit" class="btn btn-info" > Actualizar</button>
 
             </div>
             <!-- /.box-body -->

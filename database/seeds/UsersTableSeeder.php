@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         $dato->name="Jorge Gutierrez";
         $dato->email="jorge.gutierrez@corporalexperience.com";
         $dato->password=crypt("111111","");
-        $dato->rol_id=2;
+        $dato->rol_id=1;
         $dato->estado=1;
         $dato->save();
     }

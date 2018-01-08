@@ -59,11 +59,11 @@ class SedeController extends Controller
     {
       $request->validate([
         'contacto' => 'required|',
-        'direccion' => 'required|',
+        'direccion' => 'required|unique:act_client_sedes',
         'lat' => 'required|',
         'lng' => 'required|',
       ]);
-      if($request->ajax()){
+      //if($request->ajax()){
 
         $dato = new ActClientSede();
         $dato->contacto=$request->contacto;
@@ -75,9 +75,10 @@ class SedeController extends Controller
         $dato->lng=$request->lng;
         $dato->act_client_final_id=$id;
         $dato->save();
-      }
+      //}
 
-
+      session()->flash('message', 'Guardado correctamente');
+      return redirect('sedes/create/'.$id);
 
     }
 

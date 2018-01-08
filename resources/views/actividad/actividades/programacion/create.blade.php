@@ -17,7 +17,7 @@
 
     <section class="content container-fluid">
 @if (Auth::user()->rol_id <= 2)
-      <a class="btn btn-app" href="{{ url('sedes/create/'.$row->cliente->id)}}">
+      <a class="btn btn-app" href="{{ url('asignacion')}}">
         <i class="fa fa-arrow-left"></i> Atras
       </a>
 @else
@@ -52,26 +52,54 @@
          </div>
       @endif
 
+      <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+            <b><i class="fa fa-info"></i> Note:</b><br>
+             Si desea agregar más clientes y sedes ingrese en la opción de menú <b>Gestión</b>
+      </p>
 
       <div class="box box-primary" id="agregarSede">
 
-              <div class="overlay" id="carga" style="display:none;">
-                <h1 style="background-color: antiquewhite">...ENVIANDO</h1>
-                <i class="fa fa-refresh fa-spin"></i>
-              </div>
+        <div class="overlay" id="carga" style="display:none;">
+          <h1 style="background-color: antiquewhite">...ENVIANDO</h1>
+          <i class="fa fa-refresh fa-spin"></i>
+        </div>
 
             <div class="box-header with-border">
               <h3 class="box-title">Programar Actividad
-                <hr>
-                <b>Cliente:</b> {{$row->cliente->nombre}}<br><b>Sede:</b> {{$row->direccion}} </h3>
+
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {{-- {!! Form::open(['id' => 'form']) !!} --}}
-              {!! Form::open(['url' => 'actividades-client/'.$row->id, 'method' => 'post', 'id' => 'form']) !!}
+              {!! Form::open(['url' => 'programar/', 'method' => 'post', 'id' => 'form']) !!}
               <div role="form">
                 <!-- text input -->
-              <div class="col-md-3">
+                <div class="col-md-4">
+                  <div class="form-group {{ $errors->has('clientes') ? ' has-error' : '' }}">
+                    <label>Cliente</label>
+                      @if (count($clientes) == NULL)
+                        <br> Debe ingresar los clientes y sus respectivas sedes en el menú <b><a href="{{ url('clientes')}}">Gestión</a></b>
+                      @else
+                        <select class="form-control" name="clientes" value="{{ old('clientes') }}" id="clientes" required>
+                          <option value="">..Selecionar</option>
+                        @foreach ($clientes as $cliente)
+                        <option value="{{$cliente->id}}">{{($cliente->nombre)}}</option>,
+                        @endforeach
+                        </select>
+                      @endif
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group {{ $errors->has('sedes') ? ' has-error' : '' }}">
+                    <label>Sede</label>
+                        <select class="form-control" name="sedes" value="{{ old('sedes') }}" id="sedes" required>
+                          <option value="">..Selecionar</option>
+                        </select>
+                  </div>
+                </div>
+
+              <div class="col-md-4">
                 <div class="form-group {{ $errors->has('actividad') ? ' has-error' : '' }}">
                   <label>Actividad</label>
                   @if (Auth::user()->rol_id <= 2)
@@ -82,8 +110,6 @@
                     @foreach ($actividades as $actividad)
                     <option value="{{$actividad->nombre}}">{{$actividad->nombre}}</option>,
                     @endforeach
-
-
                   </select>
                  @endif
                 </div>
@@ -109,7 +135,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-clock-o"></i>
                       </div>
-                      <input type="text" class="form-control timepicker" name="hora_inicio" value="{{ old('hora_inicio') }}" id="hora_inicio" required>
+                      <input type="text" class="form-control timepicker" name="hora_inicio" value="{{ old('hora_inicio') }}" id="hora_inicio"  required>
                     </div>
                   </div>
                 </div>
@@ -143,7 +169,7 @@
                     <label>Profesores</label><br>
                     @foreach ($users as $user)
                       <label>
-                        <input type="checkbox" class="flat-red profe" value="{{$user->id}}" name="profesor[]" > {{$user->name}}
+                        <input type="checkbox" class="flat-red" value="{{$user->id}}" name="profesor[]"> {{$user->name}}
                       </label>
                     @endforeach
                 </div>
@@ -155,7 +181,7 @@
             <div class="box-footer">
               <button type="submit" class="btn btn-info" >Solo Añadir</button>
                 @if (Auth::user()->rol_id <= 2)
-              <button type="sumit" class="btn btn-success"  name="asignar" value="asignar" id="asignar">Añadir y enviar a Profe</button>
+              <button type="submit" class="btn btn-success"  name="asignar" value="asignar" id="asignar">Añadir y enviar a Profe</button>
             @endif
               {{-- <a type="button" class="btn btn-default" href="{{ url('clientes')}}">Cancelar</a> --}}
             </div>
@@ -168,9 +194,8 @@
                   <div class="col-xs-12">
                     <div class="box">
                       <div class="box-header">
-                        <h3 class="box-title">Actividades </h3> <a href=""><i class="fa fa-refresh"></i></a>
-
-         
+                        <h3 class="box-title">Actividades Recientes</h3> <a href=""><i class="fa fa-refresh"></i></a>
+ 
                       </div>
                       <!-- /.box-header -->
                       <div class="box-body table-responsive no-padding">
@@ -285,7 +310,38 @@
   } );
 </script>
 
+<script>
 
+$(document).ready(function(){
+
+     $("#sedes").prop('disabled', true);
+
+      $("#clientes").change(function(e){
+
+              e.preventDefault();
+
+              cliente = $("#clientes").val();
+              url = "programar/clientes/"+cliente;
+
+              $.get(url, function(sedes){
+                if(sedes.idSedes == ""){
+                    sedeURL ='{{ url('sedes/create/')}}';
+                    sedeURLCompleta = sedeURL+'/'+cliente;
+                  $( "#sedes" ).replaceWith( "<p>Debe ingresar sedes a este cliente en <b><a href="+sedeURLCompleta+">Gestión</a></b><p>" );
+                }else{
+                  $("#sedes").prop('disabled', false);
+
+                  for ( var i = 0, l = sedes.idSedes.length; i < l; i++ ) {
+                    $('#sedes').append(new Option( sedes.direccion[i],sedes.idSedes[i], true, true));
+                  }
+                }
+
+              });
+
+     })
+})
+
+</script>
 
 
 <script>
@@ -304,10 +360,6 @@ $(function(){
  });
 });
 </script>
-
-
-
-
 
 
 @endsection

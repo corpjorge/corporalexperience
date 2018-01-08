@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Añadir Persona
+        Añadir Participante
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Nivel</a></li>
-        <li class="active">Añadir Persona</li>
+        <li class="active">Añadir Participante</li>
       </ol>
     </section>
 
@@ -43,7 +43,7 @@
 
       <div class="box box-primary" id="agregarSede">
             <div class="box-header with-border">
-              <h3 class="box-title">Ingresar Persona</h3>
+              <h3 class="box-title">Ingresar Participante</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

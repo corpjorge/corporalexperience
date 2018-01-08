@@ -26,7 +26,7 @@
     <section class="content container-fluid">
 
       <a class="btn btn-app" href="{{ url('profesores/create/')}}">
-        <i class="fa fa-plus"></i> Añadir
+        <i class="fa fa-plus"></i> Añadir profesor
       </a>
 
       <div class="row">
@@ -35,15 +35,7 @@
             <div class="box-header">
               <h3 class="box-title">Profesores</h3>
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
+   
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
@@ -56,8 +48,8 @@
                 @foreach ($rows as $key)
                 <tr>
                   <td>{{$key->id}}</td>
-                  <td><a href="{{ url('profesores/'.$key->id)}}">{{$key->name}}</a></td>
-                  <td><a href="mailto:{{$key->email}}">{{$key->email}}</a></td>
+                  <td><a href="{{ url('profesores/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->name}}</td>
+                  <td><a href="mailto:{{$key->email}}"><i class="fa fa-envelope"></i></a> {{$key->email}} </td>
                 </tr>
                 @endforeach
               </tbody></table>

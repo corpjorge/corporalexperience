@@ -52,13 +52,13 @@
 
                     <ul class="list-group list-group-unbordered">
                       <li class="list-group-item">
-                        <b>Telefono</b> <a class="pull-right">{{$row->telefono}}</a>
+                        <b>Telefono</b> <a class="pull-right">{{$row->telefono}}</a><br><br>
                       </li>
                       <li class="list-group-item">
-                        <b>correo</b> <a class="pull-right">{{$row->correo}}</a>
+                        <b>correo</b> <a class="pull-right">{{$row->correo}}</a><br><br>
                       </li>
                       <li class="list-group-item">
-                        <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a>
+                        <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a><br><br>
                       </li>
                     </ul>
 
@@ -97,8 +97,8 @@
                                 @foreach ($rows as $key)
                                 <tr>
                                   <td>{{$key->id}}</td>
-                                  <td><a href="{{ url('clientes/'.$key->id)}}">{{$key->nombre}}</a></td>
-                                  <td><a href="mailto:{{$key->correo}}">{{$key->correo}}</a></td>
+                                  <td><a href="{{ url('clientes/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->nombre}}</td>
+                                  <td><a href="mailto:{{$key->correo}}"><i class="fa fa-envelope"></i></a> {{$key->correo}}</td>
                                   <td><a href="{{ url('sedes/create/'.$key->id)}}"><i class="fa fa-search"></i></a></td>
                                 </tr>
                                 @endforeach

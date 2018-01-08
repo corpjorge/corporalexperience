@@ -24,7 +24,9 @@ class CreateActActividadesAsignacionesTable extends Migration
             $table->date('fecha')->nullable();
             $table->time('hora_inicio')->nullable();
             $table->time('hora_final')->nullable();
+            $table->integer('participantes')->nullable();
             $table->string('observaciones', '650')->nullable();
+            $table->integer('confirmacion')->nullable();
             $table->timestamps();
         });
     }

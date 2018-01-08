@@ -22,13 +22,15 @@ class CreateActActividadesClientsTable extends Migration
             $table->date('fecha');
             $table->time('hora_inicio');
             $table->time('hora_final');
+            /*
             $table->string('nomina')->nullable();
             $table->string('nomina_pos')->nullable();
             $table->string('nomina_edades')->nullable();
             $table->string('nomina_cargos')->nullable();
+            */
             $table->bigInteger('valor')->nullable();
             $table->integer('act_estado_id')->unsigned();
-            $table->foreign('act_estado_id')->references('id')->on('act_estados');   
+            $table->foreign('act_estado_id')->references('id')->on('act_estados');
             $table->timestamps();
         });
     }

@@ -41,6 +41,14 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::resource('actividades', 'Actividad\Actividades\ActividadController');
     Route::resource('personas', 'Actividad\Client\PersonaController');
     Route::get('personas/{id}/cliente', 'Actividad\Client\PersonaController@cliente');
+    Route::get('programar', 'Actividad\Actividades\ActividadClientController@programarCreate');
+    Route::get('programar/clientes/{id}', 'Actividad\Actividades\ActividadClientController@clientes');
+    Route::post('programar/', 'Actividad\Actividades\ActividadClientController@programarStorage');
+    Route::get('programar/{id}', 'Actividad\Actividades\ActividadClientController@programarShow');
+    Route::get('informe', 'Actividad\Actividades\InformeController@index');
+    Route::post('informe/intermediarioexcel', 'Actividad\Actividades\InformeController@intermediarioExcel');
+    Route::post('informe/profesorexcel', 'Actividad\Actividades\InformeController@profesorExcel');
+    Route::post('informe/clientepdf', 'Actividad\Actividades\InformeController@clientePdf');
 
   });
 
@@ -61,15 +69,16 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::get('finalizar/{id}', 'Actividad\Actividades\ActividadAsignacionController@finalizar');
     Route::post('finalizar/{id}', 'Actividad\Actividades\ActividadAsignacionController@finalizarCheck');
     Route::put('finalizar/{id}/', 'Actividad\Actividades\ActividadAsignacionController@finalizarupdate');
+    Route::get('calendario', 'Actividad\Actividades\ActividadAsignacionController@calendarioIndex');
+    Route::get('confirmar/{id}', 'Actividad\Actividades\ActividadAsignacionController@confirmar');
 
   });
 
   Route::resource('asistencia', 'Actividad\Actividades\AsistenciaController');
   Route::post('asistencia/{id}', 'Actividad\Actividades\AsistenciaController@ingreso');
   Route::post('asistencia/{id}/eliminar', 'Actividad\Actividades\AsistenciaController@ingresoActualizar');
-  Route::get('asistencia-descargar/{id}', 'Actividad\Actividades\AsistenciaController@descargar');  
+  Route::get('asistencia-descargar/{id}', 'Actividad\Actividades\AsistenciaController@descargar');
   Route::get('asignacion/{id}', 'Actividad\Actividades\ActividadAsignacionController@show');
-
-
+  Route::post('buscar/nit', 'Actividad\BuscadorController@nit');
 
 });

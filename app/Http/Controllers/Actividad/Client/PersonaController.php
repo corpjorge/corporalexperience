@@ -56,7 +56,7 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'identificacion' => 'required|unique:act_client_personas|',
+        'identificacion' => 'required|unique:act_client_personas|min:1',
         'nombre' => 'required|',
         'cliente' => 'required|',
       ]);

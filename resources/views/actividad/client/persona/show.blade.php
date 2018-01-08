@@ -4,18 +4,18 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Persona
+        Participante
         <small>ID: {{$row->id}}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Nivel</a></li>
-        <li class="active">Persona</li>
+        <li class="active">Participante</li>
       </ol>
     </section>
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="{{ url('personas')}}">
+      <a class="btn btn-app" href="{{ url('personas/'.$row->act_client_final_id.'/cliente')}}">
         <i class="fa fa-arrow-left"></i> Atras
       </a>
 

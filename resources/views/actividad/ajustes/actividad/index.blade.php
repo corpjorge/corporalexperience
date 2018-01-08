@@ -18,7 +18,7 @@
     <section class="content container-fluid">
 
       <a class="btn btn-app" href="{{ url('actividad/create/')}}">
-        <i class="fa fa-plus"></i> Añadir
+        <i class="fa fa-plus"></i> Añadir Actividad
       </a>
 
       <div class="row">
@@ -45,7 +45,7 @@
                 @foreach ($rows as $key)
                 <tr>
                   <td>{{$key->id}}</td>
-                  <td><a href="{{ url('actividad/'.$key->id.'/edit')}}">{{$key->nombre}}</a></td>
+                  <td><a href="{{ url('actividad/'.$key->id.'/edit')}}"><i class="fa fa-edit"></i></a> {{$key->nombre}}</td>
                 </tr>
                 @endforeach
               </tbody></table>

@@ -6,8 +6,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Personas
-        <small></small>
+        Participantes
+        <small>Resumen de Participantes </small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Nivel</a></li>
@@ -25,19 +25,20 @@
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="{{ url('personas/create/')}}">
-        <i class="fa fa-plus"></i> Añadir
+
+      <a class="btn btn-app" href="{{ url('personas')}}">
+        <i class="fa fa-arrow-left"></i> Atras
       </a>
 
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Clientes</h3>
+              <h3 class="box-title">Personas</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Cedula">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -59,7 +60,7 @@
                 <tr>
                   <td>{{$key->id}}</td>
                   <td>{{$key->identificacion}}</td>
-                  <td><a href="{{ url('personas/'.$key->id)}}">{{$key->nombre}}</a></td>
+                  <td><a href="{{ url('personas/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->nombre}}</td>
                   <td><a href="{{ url('personas/'.$key->id.'/edit')}}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                 </tr>
                 @endforeach

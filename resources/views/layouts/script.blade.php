@@ -11,6 +11,9 @@
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <!-- icheck -->
 <script src="{{ asset('plugins/iCheck/icheck.min.js')}}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('bower_components/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- bootstrap datepicker -->
 <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!-- bootstrap time picker -->
@@ -85,4 +88,10 @@
 
 </script>
 
- 
+
+
+<script>
+  $(function () {
+    $('.reservation').daterangepicker()
+  })
+</script>

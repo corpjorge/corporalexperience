@@ -44,8 +44,8 @@
                 @foreach ($rows as $key)
                 <tr>
                   <td>{{$key->id}}</td>
-                  <td><a href="{{ url('intermediario/'.$key->id)}}">{{$key->nombre}}</a></td>
-                  <td><a href="mailto:{{$key->correo}}">{{$key->correo}}</a></td>
+                  <td><a href="{{ url('intermediario/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->nombre}}</td>
+                  <td><a href="mailto:{{$key->correo}}"><i class="fa fa-envelope"></i></a> {{$key->correo}}</a></td>
                 </tr>
                 @endforeach
               </tbody></table>

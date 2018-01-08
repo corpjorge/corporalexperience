@@ -54,10 +54,13 @@ function current_page($url = '/'){
           if (current_page('ajustes')) {
             echo "class='treeview active'";
           }
-          if (current_page('actividades-client')) {
+          if (current_page('calendario')) {
             echo "class='treeview active'";
           }
           if (current_page('personas')) {
+            echo "class='treeview active'";
+          }
+          if (current_page('informe')) {
             echo "class='treeview active'";
           }
           else {
@@ -75,23 +78,29 @@ function current_page($url = '/'){
           <ul class="treeview-menu">
 
             @if(Auth::user()->rol_id <= 2 OR Auth::user()->rol_id == 7)
-            <li <?php echo current_page('asignacion') ? "class='active'" : "";?>><a href="{{ url('asignacion')}}">Asignacion</a></li>
+            <li <?php echo current_page('asignacion') ? "class='active'" : "";?>><a href="{{ url('asignacion')}}">Programación</a></li>
             @endif
-            @if(Auth::user()->rol_id <= 2)
-            <li <?php echo current_page('actividades-client') ? "class='active'" : "";?>><a href="{{ url('actividades-client')}}">Actividad Cliente</a></li>
-            @endif
-            @if(Auth::user()->rol_id <= 2 OR Auth::user()->rol_id == 10)
+            {{-- @if(Auth::user()->rol_id <= 2) --}}
+            {{-- <li  --}}
+            <?php /* echo current_page('actividades-client') ? "class='active'" : ""; */ ?>
+            {{-- ><a href="{{ url('actividades-client')}}">Actividad Cliente</a></li> --}}
+            {{-- @endif --}}
+            @if(Auth::user()->rol_id == 10)
             <li <?php echo current_page('sedes') ? "class='active'" : "";?>><a href="{{ url('sedes')}}">Sedes</a></li>
             @endif
+            @if(Auth::user()->rol_id <= 2 OR Auth::user()->rol_id == 7)
+              <li <?php echo current_page('calendario') ? "class='active'" : "";?>><a href="{{ url('calendario')}}">Calendario</a></li>
+            @endif
             @if(Auth::user()->rol_id <= 2 OR Auth::user()->rol_id == 10)
-              <li <?php echo current_page('clientes') ? "class='active'" : "";?>><a href="{{ url('clientes')}}">Clientes</a></li>
+              <li <?php echo current_page('clientes') ? "class='active'" : "";?>><a href="{{ url('clientes')}}">Gestión</a></li>
             @endif
             @if(Auth::user()->rol_id <= 2)
-              <li <?php echo current_page('personas') ? "class='active'" : "";?>><a href="{{ url('personas')}}">Personas</a></li>
+              <li <?php echo current_page('informe') ? "class='active'" : "";?>><a href="{{ url('informe')}}">Informe</a></li>
             @endif
             @if(Auth::user()->rol_id <= 2)
-              <li <?php echo current_page('ajustes') ? "class='active'" : "";?>><a href="{{ url('ajustes')}}">Ajustes</a></li>
+              <li <?php echo current_page('ajustes') ? "class='active'" : "";?>><a href="{{ url('ajustes')}}">Mas...</a></li>
             @endif
+
 
           </ul>
 

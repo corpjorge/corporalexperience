@@ -70,7 +70,6 @@
                     NO <input type="radio" name="opc_intermediario" class="flat-red" value="NO" id="mostrar">
                   </label>
 
-
                   <div class="form-group" id="target" style="display: none;">
                     <div class="form-group">
                       <select class="form-control select2" style="width: 100%;" name="intermediario">
@@ -86,7 +85,7 @@
 
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary" name="guardar" value="guardar">Guardar</button>
-                  <button type="submit" class="btn btn-success" name="sedes" value="sedes"><i class="fa fa-fw fa-plus"></i> Sedes</button>
+                  {{-- <button type="submit" class="btn btn-success" name="sedes" value="sedes"><i class="fa fa-fw fa-plus"></i> Sedes</button> --}}
                   <a type="button" class="btn btn-default" href="{{ url('clientes')}}">Cancelar</a>
                 </div>
 
