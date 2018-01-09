@@ -209,7 +209,7 @@ class ActividadAsignacionController extends Controller
       $dato->hora_final = $hora_final;
       $dato->participantes = $request->participantes;
       $dato->observaciones = $request->observaciones;
-      $dato->save();
+
 
       $i = 1;
       foreach ($request->fotos as $foto) {
@@ -231,6 +231,12 @@ class ActividadAsignacionController extends Controller
        $adjunto->save();
 
       }
+
+      $dato->save();
+
+      $actividadActualizar = ActActividadesClient::find($dato->act_actividades_client_id)->first();
+      $actividadActualizar->act_estado_id = 5 ;
+      $actividadActualizar->save();
 
       session()->flash('message', 'Guardado correctamente');
       return redirect('asignacion/'.$id);
