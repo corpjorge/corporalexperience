@@ -17,11 +17,7 @@
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="javascript:history.back()">
-        <i class="fa fa-arrow-left"></i> Atras
-      </a>
-
-
+    
 
       @if (count($errors) > 0)
   			<div class="alert alert-danger">
