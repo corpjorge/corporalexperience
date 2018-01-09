@@ -43,7 +43,7 @@
                 <!-- text input -->
                 <div class="form-group">
                   <label>Identificacion</label>
-                  <input type="text" class="form-control" placeholder="Identificacion" name="identificacion" minlength="1" maxlength="11" pattern="[0-9]">
+                  <input type="text" class="form-control" placeholder="Identificacion" name="identificacion" minlength="1" maxlength="11" pattern="[0-9]{1,11}">
                 </div>
                 <div class="form-group">
                   <label>Nombre</label>
