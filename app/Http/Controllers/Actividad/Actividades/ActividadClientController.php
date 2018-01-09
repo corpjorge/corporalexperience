@@ -191,10 +191,10 @@ class ActividadClientController extends Controller
     public function programarShow($id)
     {
       if ($id == 0) {
-        $rows = ActActividadesClient::orderBy('fecha', 'asc')->paginate(30);
+        $rows = ActActividadesClient::orderBy('fecha', 'desc')->paginate(30);
       }
       else{
-        $rows = ActActividadesClient::where('act_estado_id',$id)->orderBy('fecha', 'asc')->paginate(12);
+        $rows = ActActividadesClient::where('act_estado_id',$id)->orderBy('fecha', 'desc')->paginate(12);
         $estado = ActEstados::find($id);
       }
       $users = User::where('rol_id','7')->where('estado', 1)->orWhere('rol_id',2)->get();
