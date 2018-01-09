@@ -73,7 +73,7 @@ class FinalController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'identificacion' => 'required|unique:act_client_finals|unique:act_client_intermediarios|numeric|min:1|',
+        'identificacion' => 'required|unique:act_client_finals|unique:act_client_intermediarios|numeric|min:1|max:99999999999',
       ]);
         ActClientIntermediario::validacion($request);
 
