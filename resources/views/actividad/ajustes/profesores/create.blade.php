@@ -67,7 +67,7 @@
 
                 <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                   <label>Contraseña</label>
-                  <input type="password" class="form-control  " placeholder="Correo" name="password"  >
+                  <input type="password" class="form-control  " placeholder="Contraseña" name="password"  >
                 </div>
 
               </div>
