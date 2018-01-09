@@ -65,6 +65,11 @@
                   <input type="text" class="form-control  " placeholder="Correo" name="email" value="{{ old('email') }}" >
                 </div>
 
+                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                  <label>Contraseña</label>
+                  <input type="password" class="form-control  " placeholder="Correo" name="password"  >
+                </div>
+
               </div>
             </div>
             <div class="box-footer">

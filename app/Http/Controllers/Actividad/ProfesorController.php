@@ -42,13 +42,14 @@ class ProfesorController extends Controller
         'documento' => 'required|unique:users|min:1',
         'name' => 'required|',
         'email' => 'required|unique:users',
+        'password' => 'required|',
       ]);
 
       $row = new User();
       $row->documento = $request->documento;
       $row->name = $request->name;
       $row->email = $request->email;
-      $row->password = '';
+      $row->password = crypt($request->password,"");
       $row->rol_id = 7;
       $row->estado = 1;
       $row->save();

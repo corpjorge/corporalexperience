@@ -57,6 +57,6 @@
 
     <!-- /.social-auth-links -->
 
-    <a href="{{ route('password.request') }}"> Olvidé mi contraseña</a><br>
+    {{-- <a href="{{ route('password.request') }}"> Olvidé mi contraseña</a><br> --}}
 
 @endsection

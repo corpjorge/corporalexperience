@@ -136,19 +136,19 @@ class ActividadClientController extends Controller
       }
        $dato->save();
 
-      if ($request->asignar) {
-
-        foreach ($request->profesor as $profesorCorreo) {
-          $correo = User::where('id',$profesorCorreo)->first();
-          Mail::send(new AsignacionActividad($correo->email,$dato));
-        }
-
-        $correoClient = ActClientSede::where('id',$id)->first();
-        if (!$correoClient->cliente->correo == '') {
-          Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $dato));
-        }
-
-      }
+      // if ($request->asignar) {
+      //
+      //   foreach ($request->profesor as $profesorCorreo) {
+      //     $correo = User::where('id',$profesorCorreo)->first();
+      //     Mail::send(new AsignacionActividad($correo->email,$dato));
+      //   }
+      //
+      //   $correoClient = ActClientSede::where('id',$id)->first();
+      //   if (!$correoClient->cliente->correo == '') {
+      //     Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $dato));
+      //   }
+      //
+      // }
 
       if ($request->profesor) {
         ActActividadesAsignaciones::asignar($request->profesor,$dato->id,$estado);
@@ -191,7 +191,7 @@ class ActividadClientController extends Controller
     public function programarShow($id)
     {
       if ($id == 0) {
-        $rows = ActActividadesClient::orderBy('fecha', 'desc')->paginate(30);   
+        $rows = ActActividadesClient::orderBy('fecha', 'desc')->paginate(30);
       }
       else{
         $rows = ActActividadesClient::where('act_estado_id',$id)->orderBy('fecha', 'desc')->paginate(12);
@@ -291,19 +291,19 @@ class ActividadClientController extends Controller
       }
       $dato->save();
 
-      if ($request->asignar) {
-
-        foreach ($request->profesor as $profesorCorreo) {
-          $correo = User::where('id',$profesorCorreo)->first();
-          Mail::send(new AsignacionActividad($correo->email,$dato));
-        }
-
-        $correoClient = ActClientSede::where('id',$id)->first();
-        if (!$correoClient->cliente->correo == '') {
-          Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $dato));
-        }
-
-      }
+      // if ($request->asignar) {
+      //
+      //   foreach ($request->profesor as $profesorCorreo) {
+      //     $correo = User::where('id',$profesorCorreo)->first();
+      //     Mail::send(new AsignacionActividad($correo->email,$dato));
+      //   }
+      //
+      //   $correoClient = ActClientSede::where('id',$id)->first();
+      //   if (!$correoClient->cliente->correo == '') {
+      //     Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $dato));
+      //   }
+      //
+      // }
 
       if ($request->profesor) {
         ActActividadesAsignaciones::asignar($request->profesor,$dato->id,$estado);
@@ -445,12 +445,12 @@ class ActividadClientController extends Controller
         foreach ($asignaciones as $asignacion) {
           $asignacion->act_estado_id = 3;
           $asignacion->save();
-          Mail::send(new AsignacionActividad($asignacion->usuario->email, $asignacion->actividad));
+          // Mail::send(new AsignacionActividad($asignacion->usuario->email, $asignacion->actividad));
         }
-        $correoClient = ActClientSede::where('id',$asignacion->actividad->sede->cliente->id)->first();
-        if (!$correoClient->cliente->correo == '') {
-          Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $asignacion->actividad));
-        }
+        // $correoClient = ActClientSede::where('id',$asignacion->actividad->sede->cliente->id)->first();
+        // if (!$correoClient->cliente->correo == '') {
+        //   Mail::send(new AsignacionActividadClient($correoClient->cliente->correo, $asignacion->actividad));
+        // }
 
       }
       $datos->save();
