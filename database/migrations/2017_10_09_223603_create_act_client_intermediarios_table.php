@@ -15,13 +15,13 @@ class CreateActClientIntermediariosTable extends Migration
     {
         Schema::create('act_client_intermediarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('identificacion')->unique();
+            $table->bigInteger('identificacion')->unique();
             $table->string('nombre');
             $table->bigInteger('telefono')->nullable();
             $table->string('correo')->nullable();
             $table->string('contacto')->nullable();
-            $table->timestamps();            
-        }); 
+            $table->timestamps();
+        });
     }
 
     /**

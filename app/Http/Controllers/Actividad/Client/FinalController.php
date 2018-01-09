@@ -112,7 +112,7 @@ class FinalController extends Controller
      */
     public function show($id)
     {
-      $rows = ActClientIntermediario::find(1)->clientes()->paginate(30);
+      $rows = ActClientIntermediario::find($id)->clientes()->paginate(30);
       $sedes = ActClientFinal::find($id)->sedes()->paginate(30);
       $actividades = ActClientFinal::find($id)->actividades()->paginate(30);
       $row = ActClientFinal::find($id);
