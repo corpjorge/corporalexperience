@@ -178,7 +178,7 @@ class ActividadAsignacionController extends Controller
 
     public function finalizarCheck(Request $request, $id)
     {
-      ini_set('max_execution_time', 300);
+      ini_set('max_execution_time', 5000);
 
       $request->validate([
         'fecha' => 'required|',
@@ -240,7 +240,7 @@ class ActividadAsignacionController extends Controller
 
     public function descargar($id)
     {
-      ini_set('max_execution_time', 300);
+      ini_set('max_execution_time', 5000);
 
       $row = ActActividadesAsignaciones::find($id);
       if (Auth::user()->rol_id == 10) {

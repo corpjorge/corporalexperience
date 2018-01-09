@@ -51,6 +51,13 @@
 
 
       <div class="box box-primary" id="agregarSede" >
+
+        <div class="overlay" id="carga" style="display:none;">
+          <h1 style="background-color: antiquewhite">...SUBIENDO FOTOS</h1>
+          <i class="fa fa-refresh fa-spin"></i>
+        </div>
+
+
             <div class="box-header with-border">
               <h3 class="box-title">Editar:<br><br>ID:<b> {{$row->id}}</b></h3>
             </div>
@@ -78,7 +85,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-clock-o"></i>
                       </div>
-                      <input type="text" class="form-control timepicker" name="hora_inicio" value="{{ old('hora_inicio') }}" required>
+                      <input type="text" class="form-control timepicker" name="hora_inicio" value="{{ old('hora_inicio') }}"  id="hora_final" required>
                     </div>
                   </div>
                 </div>
@@ -92,7 +99,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-clock-o"></i>
                       </div>
-                      <input type="text" class="form-control timepicker" name="hora_final" value="{{ old('hora_final') }}" required>
+                      <input type="text" class="form-control timepicker" name="hora_final" value="{{ old('hora_final') }}" id="hora_inicio" required>
                     </div>
                   </div>
                 </div>
@@ -101,7 +108,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Participantes</label>
-                  <input type="Number" class="form-control" placeholder="Participantes" name="participantes" value="{{old('participantes')}}" min="1">
+                  <input type="Number" class="form-control" placeholder="Participantes" name="participantes" value="{{old('participantes')}}" min="1" id="participantes" required>
                 </div>
               </div>
               </div>
@@ -109,7 +116,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Observaciones</label>
-                  <input type="text" class="form-control" placeholder="MAX 650 Caracteres" name="observaciones" value="{{old('observaciones')}}">
+                  <input type="text" class="form-control" placeholder="MAX 650 Caracteres" name="observaciones" value="{{old('observaciones')}}" id="observaciones" required>
                 </div>
               </div>
             </div><br><br>
@@ -124,7 +131,7 @@
               </div>
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-success">Finalizar</button>
+                <button type="submit" class="btn btn-success" id="asignar">Finalizar</button>
               </div>
 
 
@@ -136,6 +143,23 @@
           </div>
 {!! Form::close() !!}
 
+
+<script>
+$(function(){
+ $("#asignar").click(function(){
+
+   hora_final    = $("#hora_final").val();
+   hora_inicio   = $("#hora_inicio").val();
+   datepicker    = $("#datepicker").val();
+   participantes = $("#participantes").val();
+   observaciones = $("#observaciones").val();
+
+   if (hora_final && hora_inicio && datepicker && participantes && observaciones) {
+     $("#carga").show();
+   }
+ });
+});
+</script>
 
 
 
