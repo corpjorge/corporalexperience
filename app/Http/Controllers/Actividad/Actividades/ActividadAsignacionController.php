@@ -52,7 +52,7 @@ class ActividadAsignacionController extends Controller
           $rows = ActActividadesClient::all();
         }
         if (Auth::user()->rol_id == 7) {
-          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->get();
+          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id',3)->where('act_estado_id',4)->where('act_estado_id',5)->get();
         }
         return view('actividad.actividades.calendario.index', ['rows' => $rows]);
     }
