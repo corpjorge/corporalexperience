@@ -36,7 +36,7 @@ class ActividadAsignacionController extends Controller
         if (Auth::user()->rol_id == 7) {
           // $actHoy = ActActividadesAsignaciones::actHoy(Auth::user()->id)->paginate(15);
           $atrasados = ActActividadesAsignaciones::where('act_estado_id',4)->where('user_id',Auth::user()->id)->paginate(15);
-          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id','==',3)->orderBy('id', 'desc')->paginate(30);
+          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id',3)->orderBy('id', 'desc')->paginate(30);
           return view('actividad.actividades.asignacion.index', ['rows' => $rows, 'atrasados' => $atrasados]);
         }
     }
