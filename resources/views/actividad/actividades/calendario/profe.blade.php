@@ -16,10 +16,10 @@
     </section>
 
     <section class="content container-fluid" style="min-height: 0px;">
-      <a href="{{ url('programar')}}">
+      <a href="{{ url('calendario/0')}}">
             <div class="col-sm-6 col-xs-12">
               <div class="info-box">
-                <span class="info-box-icon bg-blue"><i class="fa fa-plus"></i></span>
+                <span class="info-box-icon bg-blue"><i class="fa fa-calendar"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Todos</span>
                   <p>Ingresar</p>

@@ -83,7 +83,7 @@
       },
       //Random default events
       events    : [
-        @if (Auth::user()->rol_id == 7)
+        @if ($id != 0)
           @foreach ($rows as $key)
           {
             title          : '{{$key->actividad->actividad->nombre}} - {{$key->actividad->sede->cliente->nombre}}',
@@ -111,14 +111,14 @@
                backgroundColor: '#0080FF',
                borderColor    : '#0080FF',
              @endif
-             @if ($key->act_estado_id == 5)
+             @if ($key->act_estado_id == 6)
                backgroundColor: '#29088A',
                borderColor    : '#29088A',
              @endif
           },
           @endforeach
         @endif
-        @if (Auth::user()->rol_id <= 2)
+        @if ($id == 0)
           @foreach ($rows as $key)
           {
             title          : '{{$key->actividad->nombre}} - {{$key->sede->cliente->nombre}}',
@@ -146,7 +146,7 @@
                backgroundColor: '#0080FF',
                borderColor    : '#0080FF',
              @endif
-             @if ($key->act_estado_id == 5)
+             @if ($key->act_estado_id == 6)
                backgroundColor: '#29088A',
                borderColor    : '#29088A',
              @endif

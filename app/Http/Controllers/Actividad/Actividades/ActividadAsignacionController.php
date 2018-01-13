@@ -54,19 +54,20 @@ class ActividadAsignacionController extends Controller
         }
         if (Auth::user()->rol_id == 7) {
           $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id',3)->orWhere('act_estado_id',4)->orWhere('act_estado_id',5)->get();
-          return view('actividad.actividades.calendario.index', ['rows' => $rows]);
+          $id = 1;
+          return view('actividad.actividades.calendario.index', compact('id'), ['rows' => $rows]);
         }
     }
 
     public function calendarioProfe($id)
     {
-      if ($id = 0) {
+      if ($id == 0) {
         $rows = ActActividadesClient::all();
       }
       else{
         $rows = ActActividadesAsignaciones::where('user_id',$id)->get();
       }
-      return view('actividad.actividades.calendario.index', ['rows' => $rows]);
+      return view('actividad.actividades.calendario.index', compact('id'), ['rows' => $rows]);
     }
 
 
