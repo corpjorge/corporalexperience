@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::post('finalizar/{id}', 'Actividad\Actividades\ActividadAsignacionController@finalizarCheck');
     Route::put('finalizar/{id}/', 'Actividad\Actividades\ActividadAsignacionController@finalizarupdate');
     Route::get('calendario', 'Actividad\Actividades\ActividadAsignacionController@calendarioIndex');
+    Route::get('calendario/{id}', 'Actividad\Actividades\ActividadAsignacionController@calendarioProfe');
     Route::get('confirmar/{id}', 'Actividad\Actividades\ActividadAsignacionController@confirmar');
 
   });
