@@ -87,6 +87,7 @@
                             <th>#</th>
                             <th>Cliente</th>
                             <th>Sede</th>
+                            <th>Obs</th>
                             <th>Actividad</th>
                             <th>Fecha</th>
                             <th>Hora</th>
@@ -96,7 +97,8 @@
                           <tr id="tabla_sedes">
                             <td>{{$key->id}}</td>
                             <td><a href="{{ url('sedes/'.$key->actividad->sede->id)}}"><i class="fa fa-eye"></i></a> {{$key->actividad->sede->cliente->nombre}}</td>
-                            <td><a href="https://maps.google.com/?q={{$key->actividad->sede->lat}},{{$key->actividad->sede->lng}}" target="_blank"><i class="fa fa-map-marker"></i> {{$key->actividad->sede->direccion}}</a></td>
+                            <td>{{$key->actividad->sede->nombre}}: <a href="https://maps.google.com/?q={{$key->actividad->sede->lat}},{{$key->actividad->sede->lng}}" target="_blank"><i class="fa fa-map-marker"></i> {{$key->actividad->sede->direccion}}</a></td>
+                            <td>{{$key->actividad->sede->observacion}}</td>
                             <td>{{$key->actividad->actividad->nombre}}</td>
                             <td><?php $fecha = \Carbon\Carbon::parse($key->actividad->fecha); ?>{{$fecha->format('d-m-Y')}}</td>
                             <td>

@@ -21,6 +21,33 @@
         <i class="fa fa-arrow-left"></i> Atras
       </a>
 
+      <a class="btn btn-app" data-toggle="modal" data-target="#modal-danger">
+        <i class="fa fa-close"></i> Cancelar actividad
+      </a>
+
+{!! Form::open(['url' => 'actividades-client/cancelar/'.$row->id, 'method' => 'get']) !!}
+      <div class="modal modal-danger fade" id="modal-danger">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Confirmar</h4>
+            </div>
+            <div class="modal-body">
+              <p>¿Desea cancelar actividad con sus respectivos profesores asignados?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
+              <button type="submit" class="btn btn-outline">Si</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+{!! Form::close() !!}
+
       @if (count($errors) > 0)
   			<div class="alert alert-danger">
   					<strong>Error!</strong><br><br>
@@ -97,38 +124,11 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
-                <div class="form-group {{ $errors->has('nomina') ? ' has-error' : '' }}">
-                  <label>Nomina</label>
-                  <input type="text" class="form-control  " placeholder="Nomina" name="nomina" value="{{ $row->nomina }}" required>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group {{ $errors->has('pos') ? ' has-error' : '' }}">
-                  <label>POS</label>
-                  <input type="text" class="form-control" placeholder="POS" name="pos" value="{{ $row->nomina_pos }}" required>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group {{ $errors->has('edades') ? ' has-error' : '' }}">
-                  <label>Edades</label>
-                  <input type="text" class="form-control" placeholder="Edades" name="edades" value="{{ $row->nomina_edades }}" required>
-                </div>
-              </div>
 
               <div class="col-md-3">
                 <div class="form-group {{ $errors->has('valor') ? ' has-error' : '' }}">
                   <label>Valor</label>
                   <input type="number" class="form-control" placeholder="$" name="valor" value="{{ $row->valor }}" required>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group {{ $errors->has('cargos') ? ' has-error' : '' }}">
-                  <label>Cargos</label>
-                  <input type="text" class="form-control tags" placeholder="cargos" name="cargos" id="tags_1" value="{{ $row->nomina_cargos }}" required>
                 </div>
               </div>
 

@@ -58,11 +58,11 @@
                   <input type="email" class="form-control" placeholder="Correo" name="correo">
                 </div>
                 <div class="form-group">
-                  <label>Contacto</label>
-                  <input type="text" class="form-control" placeholder="Contacto" name="contacto">
+                  <label>Datos</label>
+                  <textarea class="form-control" rows="3" placeholder="John Doe, 5714563 ext 301, Juan Carlos, 6814561 ext 001, etc..." name="contacto"></textarea>
                 </div>
                 <div class="form-group">
-                  <label>¿Es intermediario?</label><br>
+                  <label>¿Es cliente directo?</label><br>
                   <label style="font-weight: 400;">
                     SI <input type="radio" name="opc_intermediario" class="flat-red" value="SI" id="ocultar"> &nbsp
                   </label>

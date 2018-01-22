@@ -52,7 +52,7 @@
               <div class="box-tools">
                 {!! Form::open(['url' => 'buscar/nit', 'method' => 'post']) !!}
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="number" name="dato" class="form-control pull-right" placeholder="Nit">
+                  <input type="text" name="dato" class="form-control pull-right" placeholder="Nombre">
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>

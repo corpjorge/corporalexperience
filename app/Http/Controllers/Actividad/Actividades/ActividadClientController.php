@@ -363,10 +363,10 @@ class ActividadClientController extends Controller
         'fecha' => 'required|',
         'hora_inicio' => 'required|',
         'hora_final' => 'required|',
-        'nomina' => 'required|',
-        'pos' => 'required|',
-        'edades' => 'required|',
-        'cargos' => 'required|',
+        // 'nomina' => 'required|',
+        // 'pos' => 'required|',
+        // 'edades' => 'required|',
+        // 'cargos' => 'required|',
         'valor' => 'required|numeric|min:1|'
       ]);
 
@@ -386,15 +386,31 @@ class ActividadClientController extends Controller
       $dato->fecha = $fecha;
       $dato->hora_inicio = $hora_inicio;
       $dato->hora_final = $hora_final;
-      $dato->nomina = $request->nomina;
-      $dato->nomina_pos = $request->pos;
-      $dato->nomina_edades = $request->edades;
-      $dato->nomina_cargos = $request->cargos;
+      // $dato->nomina = $request->nomina;
+      // $dato->nomina_pos = $request->pos;
+      // $dato->nomina_edades = $request->edades;
+      // $dato->nomina_cargos = $request->cargos;
       $dato->valor = $request->valor;
       $dato->save();
 
       session()->flash('message', 'Guardado correctamente');
       return redirect('actividades-client/'.$actActividadesClient.'/edit');
+
+    }
+
+    public function cancelar($id)
+    {
+      $act = ActActividadesClient::find($id);
+      $act->act_estado_id = 6;
+      $act->save();
+
+     $asignaciones = ActActividadesAsignaciones::where('act_actividades_client_id',$id)->get();
+     foreach ($asignaciones as $asignacion) {
+       $asignacion->act_estado_id = 6;
+       $asignacion->save();
+     }
+     session()->flash('message', 'Guardado correctamente');
+     return redirect('actividades-client/'.$id);
 
     }
 

@@ -17,9 +17,8 @@ class CreateActClientFinalsTable extends Migration
             $table->increments('id');
             $table->bigInteger('identificacion')->unique();
             $table->string('nombre');
-            $table->bigInteger('telefono')->nullable();
             $table->string('correo')->nullable();
-            $table->string('contacto')->nullable();
+            $table->string('contacto', '950')->nullable();
             $table->integer('act_client_Inter_id')->unsigned();
             $table->foreign('act_client_Inter_id')->references('id')->on('act_client_intermediarios');
             $table->timestamps();

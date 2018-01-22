@@ -104,6 +104,12 @@ html,body{
                 <!-- text input -->
               <div class="col-md-3">
                 <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" placeholder="Nombre de la sede" name="nombre" required >
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
                   <label>Contacto</label>
                   <input type="text" class="form-control" placeholder="Nombre del contacto" name="contacto" value="{{$row->contacto}}" required >
                 </div>
@@ -125,6 +131,13 @@ html,body{
                   <label>Teléfono</label>
                   <input type="number" class="form-control" placeholder="Teléfono" name="telefono" value="{{$row->telefono}}">
 
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Observación</label>
+                  <input type="text" class="form-control" placeholder="Mas datos de direccion" name="observacion" required >
                 </div>
               </div>
 
@@ -171,14 +184,16 @@ html,body{
                   <div class="col-xs-12">
                     <div class="box">
                       <div class="box-header">
-                        <h3 class="box-title">Sedes de {{$row->nombre}}</h3> <a href=""><i class="fa fa-refresh"></i></a> 
+                        <h3 class="box-title">Sedes de {{$row->nombre}}</h3> <a href=""><i class="fa fa-refresh"></i></a>
                       </div>
                       <!-- /.box-header -->
                       <div class="box-body table-responsive no-padding">
                         <table class="table table-hover" >
                           <tbody><tr>
                             <th>#</th>
+                            <th>Nombre</th>
                             <th>Dirección</th>
+                            <th>Obs</th>
                             <th>Contacto</th>
                             <th>Telefono</th>
                             <th>Programación</th>
@@ -186,8 +201,10 @@ html,body{
                           @foreach ($rows as $key)
                           <tr id="tabla_sedes">
                             <td>{{$key->id}}</td>
+                            <td><a href="{{ url('sedes/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->nombre}}</td>
                             <td><a href="https://maps.google.com/?q={{$key->lat}},{{$key->lng}}" target="_blank"> <i class="fa fa-map-marker"></i></a> {{$key->direccion}}</td>
-                            <td><a href="{{ url('sedes/'.$key->id)}}"><i class="fa fa-eye"></i></a> {{$key->contacto}}</td>
+                            <td>{{$key->observacion}}</td>
+                            <td>{{$key->contacto}}</td>
                             <td>{{$key->telefono}}</td>
                             <td><a href="{{ url('actividades-client/create/'.$key->id)}}">Ver y añadir <i class="fa fa-arrow-circle-right"></i></a></td>
                           </tr>

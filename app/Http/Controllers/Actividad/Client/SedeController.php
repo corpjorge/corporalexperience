@@ -58,19 +58,23 @@ class SedeController extends Controller
     public function store(Request $request, $id)
     {
       $request->validate([
+        'nombre' => 'required|',
         'contacto' => 'required|',
-        'direccion' => 'required|unique:act_client_sedes',
+        'direccion' => 'required|',
+        'observacion' => 'required|',
         'lat' => 'required|',
         'lng' => 'required|',
       ]);
       //if($request->ajax()){
 
         $dato = new ActClientSede();
+        $dato->nombre=$request->nombre;
         $dato->contacto=$request->contacto;
         $dato->contacto_cargo=$request->contacto_cargo;
         $dato->correo=$request->correo;
         $dato->telefono=$request->telefono;
         $dato->direccion=$request->direccion;
+        $dato->observacion=$request->observacion;
         $dato->lat=$request->lat;
         $dato->lng=$request->lng;
         $dato->act_client_final_id=$id;
@@ -122,18 +126,22 @@ class SedeController extends Controller
     public function update(Request $request, $actClientSede)
     {
       $request->validate([
+        'nombre' => 'required|',
         'contacto' => 'required|',
         'direccion' => 'required|',
+        'observacion' => 'required|',
         'lat' => 'required|',
         'lng' => 'required|',
       ]);
 
         $dato = ActClientSede::find($actClientSede);
+        $dato->nombre=$request->nombre;
         $dato->contacto=$request->contacto;
         $dato->contacto_cargo=$request->contacto_cargo;
         $dato->correo=$request->correo;
         $dato->telefono=$request->telefono;
         $dato->direccion=$request->direccion;
+        $dato->observacion=$request->observacion;
         $dato->lat=$request->lat;
         $dato->lng=$request->lng;
         $dato->save();

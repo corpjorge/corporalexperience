@@ -15,11 +15,13 @@ class CreateActClientSedesTable extends Migration
     {
         Schema::create('act_client_sedes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->string('contacto');
             $table->string('contacto_cargo')->nullable();
             $table->string('correo')->nullable();
             $table->bigInteger('telefono')->nullable();
             $table->string('direccion');
+            $table->string('observacion');
             $table->string('lat');
             $table->string('lng');
             $table->integer('act_client_final_id')->unsigned();

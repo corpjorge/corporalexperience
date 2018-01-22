@@ -107,6 +107,12 @@ html,body{
                 <!-- text input -->
               <div class="col-md-3">
                 <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" placeholder="Nombre de la sede" name="nombre" value="{{$row->nombre}}" required >
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
                   <label>Contacto</label>
                   <input type="text" class="form-control" placeholder="Nombre del contacto" name="contacto" value="{{$row->contacto}}" required >
                 </div>
@@ -128,6 +134,13 @@ html,body{
                   <label>Teléfono</label>
                   <input type="number" class="form-control" placeholder="Teléfono" name="telefono" value="{{$row->telefono}}">
 
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Observación</label>
+                  <input type="text" class="form-control" placeholder="Mas datos de direccion" name="observacion" value="{{$row->observacion}}" required >
                 </div>
               </div>
 

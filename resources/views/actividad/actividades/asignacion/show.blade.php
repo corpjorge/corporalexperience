@@ -125,6 +125,9 @@
 
                       <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
+                          <b>Nombre</b> <a class="pull-right">{{$row->actividad->sede->nombre}}</a>
+                        </li>
+                        <li class="list-group-item">
                           <b>Contacto</b> <a class="pull-right">{{$row->actividad->sede->contacto}}</a>
                         </li>
                         <li class="list-group-item">
@@ -135,6 +138,9 @@
                         </li>
                         <li class="list-group-item">
                           <b>Intermediario</b> <a class="pull-right">{{$row->actividad->sede->cliente->intermediario->nombre}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Observacion</b> <a class="pull-right">{{$row->actividad->sede->observacion}}</a>
                         </li>
                         <li class="list-group-item">
                           <b>Direccion</b> <a class="pull-right">{{$row->actividad->sede->direccion}}</a><br><br>

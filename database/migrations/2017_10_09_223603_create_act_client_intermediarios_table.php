@@ -17,9 +17,8 @@ class CreateActClientIntermediariosTable extends Migration
             $table->increments('id');
             $table->bigInteger('identificacion')->unique();
             $table->string('nombre');
-            $table->bigInteger('telefono')->nullable();
             $table->string('correo')->nullable();
-            $table->string('contacto')->nullable();
+            $table->string('contacto', '950')->nullable();
             $table->timestamps();
         });
     }

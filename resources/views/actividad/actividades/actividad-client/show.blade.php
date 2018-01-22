@@ -75,6 +75,9 @@
                   <b>Valor</b> <a class="pull-right">{{$row->valor}}</a>
                 </li>
                 <li class="list-group-item">
+                  <b>Estado</b> <a class="pull-right"><small class="label label-{{$row->estado->estilo}}">{{$row->estado->descripcion}}</small></a>
+                </li>
+                <li class="list-group-item">
                   <b>Profesores: </b>
                   @foreach ($asignaciones as $asignacion)
                     @if ($row->act_estado_id == 3 OR Auth::user()->rol_id <= 2)

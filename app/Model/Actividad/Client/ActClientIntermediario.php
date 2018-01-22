@@ -25,7 +25,6 @@ class ActClientIntermediario extends Model
      {
        $dato->identificacion=$request->identificacion;
        $dato->nombre=$request->nombre;
-       $dato->telefono=$request->telefono;
        $dato->correo=$request->correo;
        $dato->contacto=$request->contacto;
      }

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::put('sedes/{id}', 'Actividad\Client\SedeController@update');
     Route::get('actividades-client/{id}/edit', 'Actividad\Actividades\ActividadClientController@edit');
     Route::post('actividades-client/actualizar/{id}', 'Actividad\Actividades\ActividadClientController@actualizar');
+    Route::get('actividades-client/cancelar/{id}', 'Actividad\Actividades\ActividadClientController@cancelar');
     Route::post('clientes-permitir/{id}', 'Actividad\Client\FinalController@permitir');
     Route::get('ajustes', 'Actividad\Actividades\ActividadController@inicio');
     Route::resource('profesores', 'Actividad\ProfesorController');
