@@ -86,34 +86,24 @@
         @if ($id != 0)
           @foreach ($rows as $key)
           {
-            title          : '{{$key->actividad->actividad->nombre}} - {{$key->actividad->sede->cliente->nombre}}',
-             start          : '{{$key->actividad->fecha}} {{$key->actividad->hora_inicio}}',
-             end            : '{{$key->actividad->fecha}} {{$key->actividad->hora_final}}',
-            allDay         : false,
-            url            : '{{ url('asignacion/'.$key->id)}}',
-             @if ($key->act_estado_id == 1)
-               backgroundColor: '#d2d6de',
-               borderColor    : '#d2d6de',
-             @endif
-             @if ($key->act_estado_id == 2)
-               backgroundColor: '#00c0ef',
-               borderColor    : '#00c0ef',
-             @endif
-             @if ($key->act_estado_id == 3)
-               backgroundColor: '#f39c12',
-               borderColor    : '#f39c12',
-             @endif
-             @if ($key->act_estado_id == 4)
-               backgroundColor: '#FF0000',
-               borderColor    : '#FF0000',
-             @endif
-             @if ($key->act_estado_id == 5)
-               backgroundColor: '#0080FF',
-               borderColor    : '#0080FF',
-             @endif
-             @if ($key->act_estado_id == 6)
-               backgroundColor: '#29088A',
-               borderColor    : '#29088A',
+            @if ($key->act_estado_id == 3 OR $key->act_estado_id == 4 OR $key->act_estado_id == 5)
+                title          : '{{$key->actividad->actividad->nombre}} - {{$key->actividad->sede->cliente->nombre}}',
+                 start          : '{{$key->actividad->fecha}} {{$key->actividad->hora_inicio}}',
+                 end            : '{{$key->actividad->fecha}} {{$key->actividad->hora_final}}',
+                allDay         : false,
+                url            : '{{ url('asignacion/'.$key->id)}}',
+                 @if ($key->act_estado_id == 3)
+                   backgroundColor: '#f39c12',
+                   borderColor    : '#f39c12',
+                 @endif
+                 @if ($key->act_estado_id == 4)
+                   backgroundColor: '#FF0000',
+                   borderColor    : '#FF0000',
+                 @endif
+                 @if ($key->act_estado_id == 5)
+                   backgroundColor: '#0080FF',
+                   borderColor    : '#0080FF',
+                 @endif
              @endif
           },
           @endforeach

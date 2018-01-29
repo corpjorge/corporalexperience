@@ -53,7 +53,7 @@ class ActividadAsignacionController extends Controller
           return view('actividad.actividades.calendario.profe', ['rows' => $rows]);
         }
         if (Auth::user()->rol_id == 7) {
-          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->where('act_estado_id',3)->orWhere('act_estado_id',4)->orWhere('act_estado_id',5)->get();
+          $rows = ActActividadesAsignaciones::where('user_id',Auth::user()->id)->get();
           $id = 1;
           return view('actividad.actividades.calendario.index', compact('id'), ['rows' => $rows]);
         }
@@ -247,7 +247,7 @@ class ActividadAsignacionController extends Controller
 
       $dato->save();
 
-      $actividadActualizar = ActActividadesClient::find($dato->act_actividades_client_id)->first();
+      $actividadActualizar = ActActividadesClient::find($dato->act_actividades_client_id);
       $actividadActualizar->act_estado_id = 5 ;
       $actividadActualizar->save();
 
