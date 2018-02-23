@@ -112,21 +112,48 @@ class AsistenciaController extends Controller
     public function descargar($id)
     {
       $asistencias = ActActividadesAsistencia::where('act_actividades_client_id',$id)->get();
-
+      $actividad = ActActividadesClient::find($id);
+/*
       foreach ($asistencias as $asistencia) {
             $result[] = $tabla = [
               'identificacion' => $asistencia->persona->identificacion,
-              'nombre' => $asistencia->persona->nombre,
-              'proceso' => $asistencia->persona->proceso,
+              'nombres' => $asistencia->persona->nombres,
+              'apellidos' => $asistencia->persona->apellidos,
+              'area' => $asistencia->persona->area,
               'telefono' => $asistencia->persona->telefono,
               'correo' => $asistencia->persona->correo,
+              'fecha' => $asistencia->created_at,
             ];
         }
+
 
         if (empty($result)) {
             session()->flash('error', 'Resultado vacíos');
             return redirect()->back();
         }
+*/
+
+if (empty($asistencias)) {
+    session()->flash('error', 'Resultado vacíos');
+    return redirect()->back();
+}
+
+        Excel::create('New file',function($excel) use ($asistencias, $actividad) {
+
+            $excel->sheet('New sheet', function($sheet) use ($asistencias, $actividad) {
+
+                $sheet->loadView('actividad.actividades.asistencia.excel', compact('actividad'), ['asistencias' => $asistencias]);
+
+            });
+
+        })->export('xls');
+
+
+
+// return view('actividad.actividades.asistencia.excel', compact('actividad'), ['asistencias' => $asistencias]);
+
+
+        /*
 
         Excel::create(
             'Asistencia',
@@ -139,6 +166,8 @@ class AsistenciaController extends Controller
                 );
             }
         )->export('xls');
+
+        */
 
     }
 

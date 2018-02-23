@@ -17,9 +17,9 @@
 
     <section class="content container-fluid">
 
-      <a class="btn btn-app" href="{{ url('personas')}}">
+      {{-- <a class="btn btn-app" href="{{ url('personas')}}">
         <i class="fa fa-arrow-left"></i> Atras
-      </a>
+      </a> --}}
 
       @if (count($errors) > 0)
   			<div class="alert alert-danger">
@@ -55,14 +55,24 @@
                   <input type="number" class="form-control" placeholder="identificacion" name="identificacion" id="identificacion" value="{{ old('identificacion') }}" >
                 </div>
 
+                <div class="form-group {{ $errors->has('identificacion') ? ' has-error' : '' }}">
+                  <label>Codigo</label>
+                  <input type="number" class="form-control" placeholder="codigo" name="codigo" id="codigo" value="{{ old('codigo') }}" >
+                </div>
+
                 <div class="form-group {{ $errors->has('nombre') ? ' has-error' : '' }}">
-                  <label>Nombre</label>
-                  <input type="text" class="form-control" placeholder="nombre" name="nombre" id="nombre" value="{{ old('nombre') }}" >
+                  <label>Nombres</label>
+                  <input type="text" class="form-control" placeholder="nombres" name="nombres" id="nombres" value="{{ old('nombres') }}" >
+                </div>
+
+                <div class="form-group {{ $errors->has('nombre') ? ' has-error' : '' }}">
+                  <label>Apellidos</label>
+                  <input type="text" class="form-control" placeholder="apellidos" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" >
                 </div>
 
                 <div class="form-group {{ $errors->has('proceso') ? ' has-error' : '' }}">
-                  <label>Proceso</label>
-                  <input type="text" class="form-control  " placeholder="proceso" name="proceso" value="{{ old('proceso') }}" >
+                  <label>Area</label>
+                  <input type="text" class="form-control  " placeholder="area" name="area" value="{{ old('area') }}" >
                 </div>
 
                 <div class="form-group {{ $errors->has('telefono') ? ' has-error' : '' }}">

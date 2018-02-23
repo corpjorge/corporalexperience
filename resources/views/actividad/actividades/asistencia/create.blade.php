@@ -25,6 +25,10 @@
         <i class="fa fa-download"></i> Descargar
       </a>
 
+      <a class="btn btn-app" href="{{ url('personas/create')}}">
+        <i class="fa fa-user"></i> Añadir persona
+      </a>
+
       @if (count($errors) > 0)
   			<div class="alert alert-danger">
   					<strong>Error!</strong><br><br>
@@ -95,23 +99,23 @@
             <div class="box-body">
               <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
               <ul class="todo-list">
-              @foreach ($personas as $persona)
+              {{-- @foreach ($personas as $persona) --}}
 
                 @foreach ($rows as $key)
 
-                  @if ($persona->id == $key->persona->id)
+                  {{-- @if ($persona->id == $key->persona->id) --}}
                   <li>
                     <label>
                       @if (Auth::user()->rol_id <= 2)
                         <input type="checkbox" value="{{$key->id}}" name="asistencia[]" >
                       @endif
-                    <span class="text">{{$key->persona->identificacion}}: {{$key->persona->nombre}}</span>
+                    <span class="text">{{$key->persona->identificacion}}: {{$key->persona->nombres}}</span>
                    </label>
                   </li>
-                 @else
+                 {{-- @else --}}
 
-                @endif
-                @endforeach
+                {{-- @endif --}}
+                {{-- @endforeach --}}
 
               @endforeach
 

@@ -40,8 +40,6 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::resource('intermediario', 'Actividad\Client\IntermediarioController');
     Route::post('sedes/{id}', 'Actividad\Client\SedeController@store');
     Route::resource('actividades', 'Actividad\Actividades\ActividadController');
-    Route::resource('personas', 'Actividad\Client\PersonaController');
-    Route::get('personas/{id}/cliente', 'Actividad\Client\PersonaController@cliente');
     Route::get('programar', 'Actividad\Actividades\ActividadClientController@programarCreate');
     Route::get('programar/clientes/{id}', 'Actividad\Actividades\ActividadClientController@clientes');
     Route::post('programar/', 'Actividad\Actividades\ActividadClientController@programarStorage');
@@ -75,6 +73,9 @@ Route::group(['middleware' => ['auth'], 'middleware' => ['desactivado']], functi
     Route::get('confirmar/{id}', 'Actividad\Actividades\ActividadAsignacionController@confirmar');
 
   });
+
+  Route::resource('personas', 'Actividad\Client\PersonaController');
+  Route::get('personas/{id}/cliente', 'Actividad\Client\PersonaController@cliente');
 
   Route::resource('asistencia', 'Actividad\Actividades\AsistenciaController');
   Route::post('asistencia/{id}', 'Actividad\Actividades\AsistenciaController@ingreso');

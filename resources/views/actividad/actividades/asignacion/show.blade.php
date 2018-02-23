@@ -128,7 +128,7 @@
                           <b>Nombre</b> <a class="pull-right">{{$row->actividad->sede->nombre}}</a>
                         </li>
                         <li class="list-group-item">
-                          <b>Contacto</b> <a class="pull-right">{{$row->actividad->sede->contacto}}</a>
+                          <b>Contacto</b> <a class="pull-right">{{$row->actividad->sede->contacto}}</a><br><br>
                         </li>
                         <li class="list-group-item">
                           <b>Correo</b> <a class="pull-right">{{$row->actividad->sede->correo}}</a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Actividad\Client\ActClientPersona;
 use App\Model\Actividad\Client\ActClientFinal;
+use App\Model\Actividad\Actividades\ActActividadesAsistencia;
 
 use Auth;
 
@@ -20,7 +21,6 @@ class PersonaController extends Controller
     {
       if (Auth::user()->rol_id <= 2) {
         $rows = ActClientFinal::orderBy('id', 'desc')->paginate(30);
-
       }
       // else {
       //   $cliente = ActClientIntermediario::where('identificacion',Auth::user()->documento)->first();
@@ -57,21 +57,24 @@ class PersonaController extends Controller
     {
       $request->validate([
         'identificacion' => 'required|unique:act_client_personas|min:1',
-        'nombre' => 'required|',
+        'nombres' => 'required|',
+        'apellidos' => 'required|',
         'cliente' => 'required|',
       ]);
 
       $dato = new ActClientPersona();
       $dato->identificacion = $request->identificacion;
-      $dato->nombre = $request->nombre;
-      $dato->proceso = $request->proceso;
+      $dato->codigo = $request->codigo;
+      $dato->nombres = $request->nombres;
+      $dato->apellidos = $request->apellidos;
+      $dato->area = $request->area;
       $dato->telefono = $request->telefono;
       $dato->correo = $request->correo;
       $dato->act_client_final_id = $request->cliente;
       $dato->save();
 
       session()->flash('message', 'Guardado correctamente');
-      return redirect('personas/');
+      return redirect()->back();
     }
 
     /**
@@ -83,7 +86,8 @@ class PersonaController extends Controller
     public function show($id)
     {
       $row = ActClientPersona::find($id);
-      return view('actividad.client.persona.show', [ 'row' => $row]);
+      $rows = ActActividadesAsistencia::where('act_client_persona_id',$id)->paginate(12);
+      return view('actividad.client.persona.show', [ 'row' => $row, 'rows' => $rows]);
     }
 
     /**

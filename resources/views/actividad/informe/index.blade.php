@@ -48,7 +48,7 @@
       <div class="col-xs-6">
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Consultar programación realizada de los clientes</h3>
+            <h3 class="box-title">Horas ejecutas por cliente</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">

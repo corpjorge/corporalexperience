@@ -60,7 +60,7 @@ class ActividadClientController extends Controller
      */
     public function programarCreate()
     {
-      $clientes = ActClientFinal::all();
+      $clientes = ActClientFinal::orderBy('nombre', 'ASC')->get();
       $rows = ActActividadesClient::orderBy('id', 'desc')->paginate(12);
       $actividades = ActActividades::all();
       $users = User::where('rol_id','7')->where('estado', 1)->orWhere('rol_id',2)->get();
@@ -170,15 +170,18 @@ class ActividadClientController extends Controller
 
         $idSedes = array();
         $idDirecciones = array();
+        $idNombre = array();
 
         foreach ($datos as $sede) {
            array_push ( $idSedes , $sede->id );
            array_push ( $idDirecciones , $sede->direccion );
+           array_push ( $idNombre , $sede->nombre );
         }
 
         return response()->json([
              'idSedes' => $idSedes,
-             'direccion' => $idDirecciones
+             'direccion' => $idDirecciones,
+             'nombre' => $idNombre
         ]);
 
     }

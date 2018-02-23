@@ -27,6 +27,9 @@ class FinalController extends Controller
       }
       else {
         $cliente = ActClientIntermediario::where('identificacion',Auth::user()->documento)->first();
+        if(!$cliente){
+          return 'No es intermediario';
+        }
         $rows = ActClientIntermediario::find($cliente->id)->clientes()->paginate(30);
       }
       return view('actividad.client.final.index', ['rows' => $rows]);

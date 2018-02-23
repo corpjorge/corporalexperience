@@ -81,6 +81,41 @@
             </div>
 
 
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="box">
+                  <div class="box-header">
+                    <h3 class="box-title">Actividades</h3>
+
+                  </div>
+
+
+                  <!-- /.box-header -->
+                  <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                      <tbody><tr>
+                        <th>#</th>
+                        <th>Actividad</th>
+                        <th>Fecha y Hora</th>
+
+                      </tr>
+                      @foreach ($rows as $key)
+                      <tr>
+                        <td>{{$key->id}}</td>
+                        <td>{{$key->actividad->actividad->nombre}}</td>
+                        <td>{{$key->created_at}}</td>
+
+                      </tr>
+                      @endforeach
+                    </tbody></table>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+            </div>
+
+
 </section>
 
 

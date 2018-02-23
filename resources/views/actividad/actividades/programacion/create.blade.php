@@ -80,14 +80,17 @@
                       @if (count($clientes) == NULL)
                         <br> Debe ingresar los clientes y sus respectivas sedes en el menú <b><a href="{{ url('clientes')}}">Gestión</a></b>
                       @else
-                        <select class="form-control" name="clientes" value="{{ old('clientes') }}" id="clientes" required>
-                          <option value="">..Selecionar</option>
-                        @foreach ($clientes as $cliente)
-                        <option value="{{$cliente->id}}">{{($cliente->nombre)}}</option>,
-                        @endforeach
+                        <select class="form-control selectpicker" name="clientes" value="{{ old('clientes') }}" id="clientes" data-live-search="true" required>
+
+                          @foreach ($clientes as $cliente)
+                          <option data-tokens="{{($cliente->nombre)}}" value="{{$cliente->id}}">{{($cliente->nombre)}}</option>,
+                          @endforeach
                         </select>
                       @endif
                   </div>
+
+
+
                 </div>
 
                 <div class="col-md-4">
@@ -195,7 +198,7 @@
                     <div class="box">
                       <div class="box-header">
                         <h3 class="box-title">Actividades Recientes</h3> <a href=""><i class="fa fa-refresh"></i></a>
- 
+
                       </div>
                       <!-- /.box-header -->
                       <div class="box-body table-responsive no-padding">
@@ -332,7 +335,7 @@ $(document).ready(function(){
                   $("#sedes").prop('disabled', false);
 
                   for ( var i = 0, l = sedes.idSedes.length; i < l; i++ ) {
-                    $('#sedes').append(new Option( sedes.direccion[i],sedes.idSedes[i], true, true));
+                    $('#sedes').append(new Option(sedes.nombre[i]+'-'+sedes.direccion[i],sedes.idSedes[i], true, true));
                   }
                 }
 

@@ -16,8 +16,10 @@ class CreateActClientPersonasTable extends Migration
         Schema::create('act_client_personas', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('identificacion')->unique();
-            $table->string('nombre');
-            $table->string('proceso')->nullable();
+            $table->string('codigo')->nullable();
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('area')->nullable();
             $table->bigInteger('telefono')->nullable();
             $table->string('correo')->nullable();
             $table->integer('act_client_final_id')->unsigned();

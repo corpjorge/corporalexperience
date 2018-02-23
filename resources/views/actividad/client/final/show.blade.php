@@ -56,7 +56,7 @@
                   <b>Correo</b> <a class="pull-right">{{$row->correo}}</a><br><br>
                 </li>
                 <li class="list-group-item">
-                  <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a><br><br>
+                  <b>Contacto</b> <a class="pull-right">{{$row->contacto}}</a><br><br><br>
                 </li>
                 <li class="list-group-item">
                   <b>Intermediario</b> <a class="pull-right">{{$row->intermediario->nombre}}</a><br><br>
@@ -275,7 +275,7 @@
                           <tr id="tabla_sedes">
                             <td>{{$sede->id}}</td>
                             <td><a href="https://maps.google.com/?q={{$sede->lat}},{{$sede->lng}}" target="_blank"> <i class="fa fa-map-marker"></i> </a>{{$sede->direccion}}</td>
-                            <td><a href="{{ url('sedes/'.$sede->id)}}"><i class="fa fa-eye"></i></a> {{$sede->contacto}}</td>                            
+                            <td><a href="{{ url('sedes/'.$sede->id)}}"><i class="fa fa-eye"></i></a> {{$sede->contacto}}</td>
                             <td><a href="{{ url('actividades-client/create/'.$sede->id)}}"><i class="fa fa-search"></i></a></td>
                           </tr>
                           @endforeach

@@ -1,3 +1,4 @@
+<?php $actualURL = url()->current(); ?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -9,15 +10,15 @@
     <div class="wrapper">
 
     @include('layouts.header')
-    @include('layouts.sidebar')   
-     
+    @include('layouts.sidebar')
+
     <div class="content-wrapper">
         @yield('content')
-    </div>       
-       
+    </div>
+
     @include('layouts.footer')
     @include('layouts.sidebarL')
-  
+
 
   @section('script')
       @include('layouts.script')

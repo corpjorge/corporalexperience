@@ -87,7 +87,7 @@
           @foreach ($rows as $key)
           {
             @if ($key->act_estado_id == 3 OR $key->act_estado_id == 4 OR $key->act_estado_id == 5)
-                title          : '{{$key->actividad->actividad->nombre}} - {{$key->actividad->sede->cliente->nombre}}',
+                 title          : '{{$key->actividad->sede->cliente->nombre}}-{{$key->actividad->actividad->nombre}}',
                  start          : '{{$key->actividad->fecha}} {{$key->actividad->hora_inicio}}',
                  end            : '{{$key->actividad->fecha}} {{$key->actividad->hora_final}}',
                 allDay         : false,
@@ -111,7 +111,7 @@
         @if ($id == 0)
           @foreach ($rows as $key)
           {
-            title          : '{{$key->actividad->nombre}} - {{$key->sede->cliente->nombre}}',
+            title          : '{{$key->sede->cliente->nombre}}-{{$key->actividad->nombre}}',
              start          : '{{$key->fecha}} {{$key->hora_inicio}}',
              end            : '{{$key->fecha}} {{$key->hora_final}}',
             allDay         : false,
