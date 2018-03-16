@@ -70,19 +70,19 @@
                   <input type="text" class="form-control" placeholder="apellidos" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" >
                 </div>
 
-                <div class="form-group {{ $errors->has('proceso') ? ' has-error' : '' }}">
-                  <label>Area</label>
-                  <input type="text" class="form-control  " placeholder="area" name="area" value="{{ old('area') }}" >
+                <div class="form-group {{ $errors->has('directo') ? ' has-error' : '' }}">
+                  <label>Empresa Directa</label>
+                  <input type="text" class="form-control" name="directo" value="{{ old('directo') }}" >
                 </div>
 
-                <div class="form-group {{ $errors->has('telefono') ? ' has-error' : '' }}">
+                {{-- <div class="form-group {{ $errors->has('telefono') ? ' has-error' : '' }}">
                   <label>Telefono</label>
                   <input type="number" class="form-control  " placeholder="telefono" name="telefono" value="{{ old('telefono') }}" >
                 </div>
                 <div class="form-group {{ $errors->has('correo') ? ' has-error' : '' }}">
                   <label>Correo</label>
                   <input type="email" class="form-control  " placeholder="Correo" name="correo" value="{{ old('correo') }}" >
-                </div>
+                </div>--}}
 
                 <div class="form-group {{ $errors->has('cliente') ? ' has-error' : '' }}">
                   <label>Empresa</label>

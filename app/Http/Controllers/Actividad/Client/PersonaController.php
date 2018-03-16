@@ -68,8 +68,9 @@ class PersonaController extends Controller
       $dato->nombres = $request->nombres;
       $dato->apellidos = $request->apellidos;
       $dato->area = $request->area;
-      $dato->telefono = $request->telefono;
-      $dato->correo = $request->correo;
+      $dato->directo = $request->directo;
+      //$dato->telefono = $request->telefono;
+      //$dato->correo = $request->correo;
       $dato->act_client_final_id = $request->cliente;
       $dato->save();
 

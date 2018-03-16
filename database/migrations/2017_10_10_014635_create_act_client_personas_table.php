@@ -22,6 +22,7 @@ class CreateActClientPersonasTable extends Migration
             $table->string('area')->nullable();
             $table->bigInteger('telefono')->nullable();
             $table->string('correo')->nullable();
+            $table->string('directo')->nullable();
             $table->integer('act_client_final_id')->unsigned();
             $table->foreign('act_client_final_id')->references('id')->on('act_client_finals');
             $table->timestamps();
