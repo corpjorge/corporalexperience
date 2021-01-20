@@ -1,2 +1,2 @@
-# corpalEXP
-Actividades profesionales
+# Corpal-EXP
+Actividades profesionales de pausas activas
