@@ -26,7 +26,7 @@ define( 'DB_NAME', 'corporalexperience' );
 define( 'DB_USER', 'forge' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'Insert1989' );
+define( 'DB_PASSWORD', 'cgq3v6wc8bkX1THl2XZn' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
