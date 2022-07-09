@@ -23,10 +23,10 @@
 define( 'DB_NAME', 'corporalexperience' );
 
 /** Database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'forge' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'admin' );
+define( 'DB_PASSWORD', 'Insert1989' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
